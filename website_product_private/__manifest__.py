@@ -1,18 +1,18 @@
 # Copyright 2023 Serincloud SL.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 {
-    'name': 'Website 403 Hide details',
+    'name': 'Website product private',
     'version': '16.0.1.0.0',
     'author': 'Serincloud SL',
     'website': 'https://github.com/OCA/website',
     'license': 'LGPL-3',
     'category': 'Website',
-    'summary': 'Hide details for 403 error.',
+    'summary': 'Events only for follower portal users.',
     'depends': [
-        'website',
+        'website_sale',
     ],
     'data': [
-        'views/website_views.xml',
+        'security/ir_model_access.xml',
     ],
     'installable': True,
 }

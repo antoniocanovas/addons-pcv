@@ -1,4 +1,4 @@
-# Copyright 2017 Simone Orsi.
+# Copyright 2023 Serincloud SL.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 {
     'name': 'Website event private',
