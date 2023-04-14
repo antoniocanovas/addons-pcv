@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="rental_product" inherit_id="website_sale.product" name="Select service Date">
+        <xpath expr="//div[hasclass('js_main_product')]/t[@t-placeholder='select']" position="after">
+            <!--<div t-if="combination_info['is_rental']" class="o_not_editable">-->
+            <div class="o_not_editable">
+                <div class="mb-3 align-middle input-group-lg o_website_sale_datetime_picker variant_attribute">
+                    <!--<input type="hidden" name="default_start_date"
+                           t-att-value="combination_info['default_start_date']"/>
+                    <input type="hidden" name="default_end_date" t-att-value="combination_info['default_end_date']"/>
+                    <input type="hidden" name="rental_duration_unit"
+                           t-att-value="combination_info['rental_duration_unit']"/>-->
+                    <strong class="attribute_name">Service Day</strong>
+                    <div class="oe_unremovable w-100">
+                        <div class="s_website_form_datetime input-group date col-md-8 ps-0"
+                             data-target-input="nearest"
+                             id="rentingDates">
+                            <input type="date" name="date_service"
+                                   class="form-control datetimepicker-input" data-target="#date_service"/>
+                            <div class="input-group-text" >
+                                <i class="fa fa-calendar"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+
+
+
+
+</odoo>
