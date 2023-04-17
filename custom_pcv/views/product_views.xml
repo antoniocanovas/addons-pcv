@@ -12,7 +12,7 @@
                 <field name="tipo_calculo"/>
             </field>
             <xpath expr="//page[@name='general_information']" position="after">
-                <page name="tipo_calculo" string="Cálculo variantes" attrs="{'invisible':[('tipo_calculo','=',False)]}">
+                <page name="tipo_calculo" string="Cálculo variantes" attrs="{'invisible':[('tipo_calculo','=','no')]}">
                     <group name="tipo_time" attrs="{'invisible':[('tipo_calculo', '!=', 'time')]}">
                         <field name="horas_minimo"/>
                         <field name="inicio_extra" widget="timesheet_uom"/>

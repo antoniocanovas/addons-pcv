@@ -7,7 +7,7 @@ from odoo import fields, models, api
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    tipo_calculo      = fields.Selection(['time','Time'], store=True, string='Tipo cálculo')
+    tipo_calculo      = fields.Selection([('no','None'),('time','Time')], store=True, string='Tipo cálculo', default='no')
 
     horas_minimo      = fields.Float('Horas mínimas')
     inicio_extra      = fields.Float('Hora incio extra')
