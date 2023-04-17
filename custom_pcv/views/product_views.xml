@@ -20,6 +20,8 @@
                         <field name="final_ordinario" widget="timesheet_uom"/>
                         <field name="final_extra" widget="timesheet_uom"/>
                         <field name="hextra_factor"/>
+                        <field name="pt_hora_ordinaria" attrs="{'required':[('tipo_calculo','=','time')]}"/>
+                        <field name="pt_hora_extra"     attrs="{'required':[('tipo_calculo','=','time')]}"/>
                     </group>
                 </page>
             </xpath>
