@@ -1,7 +1,7 @@
 /** @odoo-module **/
 
 import { WebsiteSale } from 'website_sale.website_sale';
-import { RentingMixin } from '@website_sale_dateservice/js/renting_mixin';
+import { RentingMixin } from '@website_sale_line_commitment_date/js/renting_mixin';
 
 WebsiteSale.include(RentingMixin);
 WebsiteSale.include({

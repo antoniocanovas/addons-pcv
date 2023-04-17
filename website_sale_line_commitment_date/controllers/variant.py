@@ -3,7 +3,7 @@
 
 from odoo import http
 from odoo.addons.website_sale.controllers.variant import WebsiteSaleVariantController
-from odoo.addons.website_sale_dateservice.controllers.product import parse_date
+from odoo.addons.website_sale_line_commitment_date.controllers.product import parse_date
 
 
 class WebsiteSaleRentingVariantController(WebsiteSaleVariantController):

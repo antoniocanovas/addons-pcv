@@ -12,13 +12,18 @@ from odoo.tools import format_amount
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
+    ##### cambiamos rent_ok  => dateservice_ok
+    dateservice_ok = fields.Boolean(
+        string="DateService dependant",
+        help="Allow renting of this product.")
+
     def _get_combination_info(
         self, combination=False, product_id=False, add_qty=1, pricelist=False,
         parent_combination=False, only_template=False
     ):
         """Override to add the information about renting for rental products
 
-        If the product is rent_ok, this override adds the following information about the renting :
+        If the product is dateservice_ok, this override adds the following information about the renting :
             - is_rental: Whether combination is rental,
             - rental_duration: The duration of the first defined product pricing on this product
             - rental_unit: The unit of the first defined product pricing on this product
@@ -43,7 +48,7 @@ class ProductTemplate(models.Model):
             parent_combination=parent_combination, only_template=only_template
         )
 
-        if self.rent_ok:
+        if self.dateservice_ok:
             if self.env.context.get('website_id'):
                 website = self.env['website'].get_current_website()
                 pricelist = pricelist or website.get_current_pricelist()
@@ -55,7 +60,7 @@ class ProductTemplate(models.Model):
                 product or self, pricelist
             )
 
-        if not self.rent_ok or not pricing:
+        if not self.dateservice_ok or not pricing:
             # I wonder if it's useful to fill this dict with unused values.
             return {
                 **combination_info,
@@ -229,7 +234,7 @@ class ProductTemplate(models.Model):
         prices = super()._get_sales_prices(pricelist)
 
         for template in self:
-            if not template.rent_ok:
+            if not template.dateservice_ok:
                 continue
             pricing = self.env['product.pricing']._get_first_suitable_pricing(template, pricelist)
             if pricing:
@@ -243,10 +248,10 @@ class ProductTemplate(models.Model):
 
     def _website_show_quick_add(self):
         self.ensure_one()
-        return not self.rent_ok and super()._website_show_quick_add()
+        return not self.dateservice_ok and super()._website_show_quick_add()
 
     def _search_get_detail(self, website, order, options):
         search_details = super()._search_get_detail(website, order, options)
         if options.get('rent_only') or (options.get('from_date') and options.get('to_date')):
-            search_details['base_domain'].append([('rent_ok', '=', True)])
+            search_details['base_domain'].append([('dateservice_ok', '=', True)])
         return search_details

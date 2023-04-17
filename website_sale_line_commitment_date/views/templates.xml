@@ -30,6 +30,32 @@
 
     </template>
 
+     <record id="product_template_form_view_dateservice" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.rental</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']" position='inside'>
+                <span class="d-inline-block">
+                    <field name="dateservice_ok"/>
+                    <label for="dateservice_ok"/>
+                </span>
+            </xpath>
+            <xpath expr="//notebook/page[@name='sales']" position="attributes">
+                <attribute name="attrs">
+                    {'invisible':[('sale_ok','=',False), ('dateservice_ok', '=', False)]}
+                </attribute>
+            </xpath>
+            <!--<group name="pricing" position="after">
+                <group string="Reservations" name="extra_rental" attrs="{'invisible': [('rent_ok', '=', False)]}">
+                    <field name="extra_hourly" widget="monetary"/>
+                    <field name="extra_daily" widget="monetary"/>
+                    <field name="currency_id" invisible="1"/>
+                </group>
+            </group>-->
+        </field>
+    </record>
+
 
 
 

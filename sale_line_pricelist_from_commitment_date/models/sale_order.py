@@ -9,6 +9,7 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     def _apply_pricelist_from_commitment_date(self):
+        print("SO", "_apply_pricelist_from_commitment_date")
         self.ensure_one()
         for line in self.order_line:
             # Price unit is still modifiable if not quantity invoiced
@@ -21,9 +22,11 @@ class SaleOrder(models.Model):
 
     @api.onchange("commitment_date", "pricelist_id")
     def onchange_price_with_commitment_date(self):
+        print("SO", "onchange_price_with_commitment_date")
         self._apply_pricelist_from_commitment_date()
 
     def create(self, vals):
+        print("SO", "create")
         if self._context.get("import_file"):
             return super().create(vals)
         sale = super().create(vals)
@@ -32,6 +35,8 @@ class SaleOrder(models.Model):
         return sale
 
     def write(self, vals):
+        print("SO", "write")
+
         if self._context.get("import_file"):
             return super().write(vals)
         if "commitment_date" not in vals and "pricelist_id" not in vals:
@@ -48,6 +53,7 @@ class SaleOrder(models.Model):
         return True
 
     def update_prices(self):
+        print("SO", "update_prices")
         self.ensure_one()
         return super(
             SaleOrder,
