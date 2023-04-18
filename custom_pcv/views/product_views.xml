@@ -15,17 +15,15 @@
                 <page name="tipo_calculo" string="Cálculo variantes" attrs="{'invisible':[('tipo_calculo','=','no')]}">
                     <group name="tipo_time" attrs="{'invisible':[('tipo_calculo', '!=', 'time')]}">
                         <group>
-                            <field name="horas_minimo"/>
-                            <field name="inicio_extra" widget="timesheet_uom"/>
                             <field name="inicio_ordinaria" widget="timesheet_uom"/>
                             <field name="final_ordinaria" widget="timesheet_uom"/>
-                            <field name="final_extra" widget="timesheet_uom"/>
-                        </group>
-                        <group>
-                            <field name="pt_hora_ordinaria" attrs="{'required':[('tipo_calculo','=','time')]}"/>
-                            <field name="pt_hora_extra"     attrs="{'required':[('tipo_calculo','=','time')]}"/>
                             <field name="atributo_hinicio"  attrs="{'required':[('tipo_calculo','=','time')]}"/>
                             <field name="atributo_hfin"     attrs="{'required':[('tipo_calculo','=','time')]}"/>
+                        </group>
+                        <group>
+                            <field name="horas_minimo"/>
+                            <field name="pt_hora_ordinaria" attrs="{'required':[('tipo_calculo','=','time')]}"/>
+                            <field name="pt_hora_extra"     attrs="{'required':[('tipo_calculo','=','time')]}"/>
                         </group>
                     </group>
                 </page>
