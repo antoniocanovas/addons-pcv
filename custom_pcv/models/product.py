@@ -28,12 +28,12 @@ class ProductTemplate(models.Model):
                 for va in record.product_variant_ids:
                     hextras, hordinarias = 0, 0
 
-                    inicio = env['product.template.attribute.value'].search(
+                    inicio = self.env['product.template.attribute.value'].search(
                         [('attribute_id', '=', record.atributo_hinicio.id),
                          ('id', 'in', va.product_template_variant_value_ids.ids)]).name
                     hinicio = inicio.split(":", 2)
                     empezar = int(hinicio[0]) + int(hinicio[1]) / 100
-                    fin = env['product.template.attribute.value'].search([('attribute_id', '=', record.atributo_hfin.id), (
+                    fin = self.env['product.template.attribute.value'].search([('attribute_id', '=', record.atributo_hfin.id), (
                         'id', 'in', va.product_template_variant_value_ids.ids)]).name
                     hfin = fin.split(":", 2)
                     terminar = int(hfin[0]) + int(hfin[1]) / 100
