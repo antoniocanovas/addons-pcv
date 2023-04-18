@@ -25,6 +25,9 @@
                             <field name="pt_hora_ordinaria" attrs="{'required':[('tipo_calculo','=','time')]}"/>
                             <field name="pt_hora_extra"     attrs="{'required':[('tipo_calculo','=','time')]}"/>
                         </group>
+                        <div>
+                            <button class="oe_highlight" type="object" name="compute_special_variant_price" string="Recalcula variantes"/>
+                        </div>
                     </group>
                 </page>
             </xpath>
