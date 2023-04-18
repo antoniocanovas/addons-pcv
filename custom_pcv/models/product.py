@@ -12,6 +12,7 @@ class ProductTemplate(models.Model):
     horas_minimo      = fields.Float('Horas mínimas')
     inicio_ordinaria  = fields.Float('Hora incio ordinaria')
     final_ordinaria   = fields.Float('Hora final ordinaria')
+    nocturnidad_ok    = fields.Boolean('Permitir nocturnidad')
     pt_hora_ordinaria = fields.Many2one('product.template', string='Hora ordinaria')
     pt_hora_extra     = fields.Many2one('product.template', string='Hora extra')
     atributo_hinicio  = fields.Many2one('product.attribute', string='Atributo hora inicio')
@@ -38,26 +39,52 @@ class ProductTemplate(models.Model):
                     hfin = fin.split(":", 2)
                     terminar = int(hfin[0]) + int(hfin[1]) / 100
 
-                    if (terminar - empezar <= 0): raise ValidationError(
-                        'Configura bien las variantes, hay horas de finalización similares o anteriores a las de inicio.')
+                    # Servicios normales, con y sin nocturnidad, en el mismo día:
+                    if (terminar - empezar > 0):
+                        # Horas extras:
+                        if (inicio_ordinaria - empezar > 0): hextras += (inicio_ordinaria - empezar)
+                        if (terminar - final_ordinaria > 0): hextras += (terminar - final_ordinaria)
+                        # Horas jornada ordinaria:
+                        if (empezar < inicio_ordinaria) and (terminar > final_ordinaria):
+                            hordinarias = final_ordinaria - inicio_ordinaria
+                        elif (empezar < inicio_ordinaria) and (terminar <= final_ordinaria):
+                            hordinarias = terminar - inicio_ordinaria
+                        elif (empezar >= inicio_ordinaria) and (terminar > final_ordinaria):
+                            hordinarias = final_ordinaria - empezar
+                        else:
+                            hordinarias = terminar - empezar
+                        if (hordinarias + hextras < horas_minimo): hordinarias = horas_minimo - hextras
 
-                    if (inicio_ordinaria - empezar > 0): hextras += (inicio_ordinaria - empezar)
-                    if (terminar - final_ordinaria > 0): hextras += (terminar - final_ordinaria)
+                    # Servicios con nocturnidad días distintos (24h):
+                    elif (terminar - empezar = 0) and  (record.nocturnidad_ok == True):
+                        hordinarias = (24 - inicio_ordinaria) + (24 - final_ordinaria)
+                        hextras = 24 - hordinarias
 
-                    if (empezar < inicio_ordinaria) and (terminar > final_ordinaria):
-                        hordinarias = final_ordinaria - inicio_ordinaria
-                    elif (empezar < inicio_ordinaria) and (terminar <= final_ordinaria):
-                        hordinarias = terminar - inicio_ordinaria
-                    elif (empezar >= inicio_ordinaria) and (terminar > final_ordinaria):
-                        hordinarias = final_ordinaria - empezar
+                    # Servicios con nocturnidad días distintos (menos de 24h):
+                    elif (terminar - empezar < 0) and (record.nocturnidad_ok == True):
+                        # DÍA 1.- Horas extras de mañana y Horas extras nocturnidad:
+                        if (inicio_ordinaria - empezar > 0):
+                            hextras += (inicio_ordinaria - empezar)
+                            hextras += (24 - final_ordinaria)
+                        # DÍA 2.- Extras de mañana y nocturnidad:
+                        if (inicio_ordinaria - terminar <= 0):
+                            hextras += terminar
+                        if (inicio_ordinaria - terminar > 0):
+                            hextras += inicio_ordinaria
+                        if (terminar - final_ordinaria > 0):
+                            hextras += (terminar - final_ordinaria)
+                        hordinarias = (24 + terminar - empezar - hextras)
+
+                    # Archivar variantes que no permiten nocturnidad y hora salida anterior o igual a entrada:
+                    # (terminar - empezar <= 0) and (record.nocturnidad_ok == False)
+                    else: archivar = True
+
+                    # Archivar o escribir valores del Cálculo coste y venta por variante:
+                    if archivar == True:
+                        va.write({'active':False})
                     else:
-                        hordinarias = terminar - empezar
-
-                    if (hordinarias + hextras < horas_minimo): hordinarias = horas_minimo - hextras
-
-                    # Cálculo coste y venta por variante:
-                    pvp = (hordinarias * record.pt_hora_ordinaria.list_price) + (hextras * record.pt_hora_extra.list_price)
-                    coste = (hordinarias * record.pt_hora_ordinaria.standard_price) + (
-                            hextras * record.pt_hora_extra.standard_price)
-                    if (va.lst_price != pvp) or (va.standard_price != coste):
-                        va.write({'lst_price': pvp, 'standard_price': coste})
+                        pvp = (hordinarias * record.pt_hora_ordinaria.list_price) + (hextras * record.pt_hora_extra.list_price)
+                        coste = (hordinarias * record.pt_hora_ordinaria.standard_price) + (
+                                hextras * record.pt_hora_extra.standard_price)
+                        if (va.lst_price != pvp) or (va.standard_price != coste):
+                            va.write({'lst_price': pvp, 'standard_price': coste})

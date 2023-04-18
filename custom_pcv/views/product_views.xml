@@ -22,6 +22,7 @@
                         </group>
                         <group>
                             <field name="horas_minimo"/>
+                            <field name="nocturnidad_ok"/>
                             <field name="pt_hora_ordinaria" attrs="{'required':[('tipo_calculo','=','time')]}"/>
                             <field name="pt_hora_extra"     attrs="{'required':[('tipo_calculo','=','time')]}"/>
                         </group>
