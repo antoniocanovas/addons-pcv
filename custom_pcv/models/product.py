@@ -27,7 +27,7 @@ class ProductTemplate(models.Model):
                 horas_minimo = record.horas_minimo
 
                 for va in record.product_variant_ids:
-                    hextras, hordinarias = 0, 0
+                    hextras, hordinarias, archivar = 0, 0, False
 
                     inicio = self.env['product.template.attribute.value'].search(
                         [('attribute_id', '=', record.atributo_hinicio.id),
