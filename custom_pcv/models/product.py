@@ -56,7 +56,7 @@ class ProductTemplate(models.Model):
                         if (hordinarias + hextras < horas_minimo): hordinarias = horas_minimo - hextras
 
                     # Servicios con nocturnidad días distintos (24h):
-                    elif (terminar - empezar = 0) and  (record.nocturnidad_ok == True):
+                    elif (terminar - empezar == 0) and  (record.nocturnidad_ok == True):
                         hordinarias = (24 - inicio_ordinaria) + (24 - final_ordinaria)
                         hextras = 24 - hordinarias
 
@@ -78,6 +78,7 @@ class ProductTemplate(models.Model):
                     # Archivar variantes que no permiten nocturnidad y hora salida anterior o igual a entrada:
                     # (terminar - empezar <= 0) and (record.nocturnidad_ok == False)
                     else: archivar = True
+
 
                     # Archivar o escribir valores del Cálculo coste y venta por variante:
                     if archivar == True:
