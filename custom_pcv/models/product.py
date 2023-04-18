@@ -1,7 +1,7 @@
 # Copyright 2023 Serincloud SL - Ingenieriacloud.com
 
 from odoo import fields, models, api
-from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
 
 
 class ProductTemplate(models.Model):
@@ -38,7 +38,7 @@ class ProductTemplate(models.Model):
                     hfin = fin.split(":", 2)
                     terminar = int(hfin[0]) + int(hfin[1]) / 100
 
-                    if (terminar - empezar <= 0): raise UserError(
+                    if (terminar - empezar <= 0): raise ValidationError(
                         'Configura bien las variantes, hay horas de finalización similares o anteriores a las de inicio.')
 
                     if (inicio_ordinaria - empezar > 0): hextras += (inicio_ordinaria - empezar)
