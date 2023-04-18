@@ -16,3 +16,5 @@ class ProductTemplate(models.Model):
     final_extra       = fields.Float('Hora final extra')
     pt_hora_ordinaria = fields.Many2one('product.template', string='Hora ordinaria')
     pt_hora_extra     = fields.Many2one('product.template', string='Hora extra')
+    atributo_hinicio  = fields.Many2one('product.attribute', string='Atributo hora inicio')
+    atributo_hfin     = fields.Many2one('product.attribute', string='Atributo hora fin')

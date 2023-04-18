@@ -21,6 +21,8 @@
                         <field name="final_extra" widget="timesheet_uom"/>
                         <field name="pt_hora_ordinaria" attrs="{'required':[('tipo_calculo','=','time')]}"/>
                         <field name="pt_hora_extra"     attrs="{'required':[('tipo_calculo','=','time')]}"/>
+                        <field name="atributo_hinicio"  attrs="{'required':[('tipo_calculo','=','time')]}"/>
+                        <field name="atributo_hfin"     attrs="{'required':[('tipo_calculo','=','time')]}"/>
                     </group>
                 </page>
             </xpath>
