@@ -10,7 +10,7 @@
     "website": "https://www.ingenieriacloud.com",
     "license": "AGPL-3",
     "depends": [
-        "webiste_event",
+        "website_event",
                 ],
     "data": [
         "views/website_event_views.xml",
