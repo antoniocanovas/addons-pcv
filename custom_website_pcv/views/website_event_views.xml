@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <!-- Remove register option: -->
+    <record id="website_event_pcv_inh_form" model="ir.ui.view">
+        <field name="name">website.event.pcv.inh.form</field>
+        <field name="model">False</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website_event.registration_template"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//form[@id='registration_form']" position="replace"/>
+            </data>
+        </field>
+    </record>
+
+</odoo>
