@@ -1,9 +1,9 @@
 /** @odoo-module **/
 
 import { WebsiteSale } from 'website_sale.website_sale';
-import { RentingMixin } from '@website_sale_line_commitment_date/js/renting_mixin';
+import { DateserviceMixin } from '@website_sale_line_commitment_date/js/dateservice_mixin';
 
-WebsiteSale.include(RentingMixin);
+WebsiteSale.include(DateserviceMixin);
 WebsiteSale.include({
     /**
      * Assign the renting dates to the rootProduct for rental products.

@@ -8,6 +8,9 @@
     'depends': ['website_sale',],
     'data': [
         'views/templates.xml',
+        'security/ir.model.access.csv',
+        'security/website_sale.xml',
+
     ],
     'assets': {
         'web.assets_frontend': [

@@ -16,7 +16,7 @@ export const unitMessages = {
     month: _lt("(%s months)."),
 };
 
-export const RentingMixin = {
+export const DateserviceMixin = {
 
     /**
      * Get the message to display if the renting has invalid dates.
