@@ -15,7 +15,6 @@
                 ],
     "data": [
         "views/product_views.xml",
-        "views/event_views.xml",
     ],
     "installable": True,
 }
