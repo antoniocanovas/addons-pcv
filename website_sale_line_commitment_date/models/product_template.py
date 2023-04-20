@@ -49,114 +49,19 @@ class ProductTemplate(models.Model):
         )
 
         if self.dateservice_ok:
-            if self.env.context.get('website_id'):
-                website = self.env['website'].get_current_website()
-                pricelist = pricelist or website.get_current_pricelist()
-            else:
-                website = False
+            print(self.dateservice_ok)
+            return {
+                **combination_info,
+                'is_dateservice': True,
+            }
 
-            product = self.env['product.product'].browse(combination_info['product_id'])
-            pricing = self.env['product.pricing']._get_first_suitable_pricing(
-                product or self, pricelist
-            )
-
-        if not self.dateservice_ok or not pricing:
+        if not self.dateservice_ok:
             # I wonder if it's useful to fill this dict with unused values.
             return {
                 **combination_info,
-                'is_rental': False,
+                'is_dateservice': False,
             }
 
-        # Compute best pricing rule or set default
-        start_date = self.env.context.get('start_date')
-        end_date = self.env.context.get('end_date')
-
-        print("PRODUCT_TEMPLATE", start_date)
-        if pricelist and start_date and end_date:
-            current_pricing = (product or self)._get_best_pricing_rule(
-                start_date=start_date, end_date=end_date, pricelist=pricelist,
-                currency=pricelist.currency_id
-            )
-            current_unit = current_pricing.recurrence_id.unit
-            current_duration = self.env['product.pricing']._compute_duration_vals(
-                start_date, end_date
-            )[current_unit]
-        else:
-            current_unit = pricing.recurrence_id.unit
-            current_duration = pricing.recurrence_id.duration
-            current_pricing = pricing
-
-        # Compute current price
-        quantity = self.env.context.get('quantity', add_qty)
-        if not pricelist:
-            current_price = combination_info['price'] * (current_duration / pricing.recurrence_id.duration)
-        else:
-            # Here we don't add the current_attributes_price_extra nor the
-            # no_variant_attributes_price_extra to the context since those prices are not added
-            # in the context of rental.
-            current_price = pricelist._get_product_price(
-                product or self, quantity, start_date=start_date, end_date=end_date
-            )
-
-        default_start_date = start_date
-        default_end_date = start_date
-
-        ratio = ceil(current_duration) / pricing.recurrence_id.duration
-        if current_unit != pricing.recurrence_id.unit:
-            ratio *= PERIOD_RATIO[current_unit] / PERIOD_RATIO[pricing.recurrence_id.unit]
-
-        company_id = False
-        if website:
-            #compute taxes
-            product = (product or self)
-            partner = self.env.user.partner_id
-            company_id = website.company_id
-
-            fpos = self.env['account.fiscal.position'].sudo()._get_fiscal_position(partner)
-            product_taxes = product.sudo().taxes_id.filtered(lambda t: t.company_id == company_id)
-            taxes = fpos.map_tax(product_taxes)
-            current_price = self._price_with_tax_computed(
-                current_price, product_taxes, taxes, company_id, pricelist, product, partner
-            )
-
-        suitable_pricings = self.env['product.pricing']._get_suitable_pricings(product or self, pricelist)
-        # If there are multiple pricings with the same recurrence, we only keep the ones with the best price
-        best_pricings = {}
-        for p in suitable_pricings:
-            if p.recurrence_id not in best_pricings:
-                best_pricings[p.recurrence_id] = p
-            elif best_pricings[p.recurrence_id].price > p.price:
-                best_pricings[p.recurrence_id] = p
-        suitable_pricings = best_pricings.values()
-        currency = pricelist and pricelist.currency_id or self.env.company.currency_id
-        def _pricing_price(pricing, pricelist):
-            if pricing.currency_id == currency:
-                return pricing.price
-            return pricing.currency_id._convert(
-                pricing.price,
-                pricelist.currency_id,
-                company_id or self.env.company,
-                fields.Date.context_today(self),
-            )
-        pricing_table = [(p.name, format_amount(self.env, _pricing_price(p, pricelist), currency))
-                            for p in suitable_pricings]
-
-        return {
-            **combination_info,
-            'is_rental': True,
-            'rental_duration': pricing.recurrence_id.duration,
-            'rental_duration_unit': pricing.recurrence_id.unit,
-            'rental_unit': pricing._get_unit_label(pricing.recurrence_id.duration),
-            'default_start_date': default_start_date,
-            'default_end_date': default_end_date,
-            'current_rental_duration': ceil(current_duration),
-            'current_rental_unit': current_pricing._get_unit_label(current_duration),
-            'current_rental_price': current_price,
-            'current_rental_price_per_unit': current_price / (ratio or 1),
-            'base_unit_price': 0,
-            'base_unit_name': False,
-            'pricing_table': pricing_table,
-        }
 
     def _get_default_renting_dates(
         self, start_date, end_date, only_template, website, duration, unit

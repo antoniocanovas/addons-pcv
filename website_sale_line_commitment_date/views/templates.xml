@@ -3,9 +3,8 @@
 
     <template id="dateservice_product" inherit_id="website_sale.product" name="Select service Date">
         <xpath expr="//div[hasclass('js_main_product')]/t[@t-placeholder='select']" position="before">
-            <!--<div t-if="combination_info['is_rental']" class="o_not_editable">-->
-            <div class="o_not_editable">
-                <div class="mb-3 align-middle input-group-lg o_website_sale_datetime_picker variant_attribute">
+            <div t-if="combination_info['is_dateservice']" class="o_not_editable">
+                <div class="mb-3 align-middle input-group-lg o_website_sale_daterange_picker variant_attribute">
                     <!--<input type="hidden" name="default_start_date"
                            t-att-value="combination_info['default_start_date']"/>
                     <input type="hidden" name="default_end_date" t-att-value="combination_info['default_end_date']"/>
@@ -24,13 +23,28 @@
 
                         </div>
                     </div>
+                   <!-- <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="input-group date " id="datetimepicker1" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>-->
                 </div>
             </div>
         </xpath>
 
     </template>
 
-     <record id="product_template_form_view_dateservice" model="ir.ui.view">
+    <record id="product_template_form_view_dateservice" model="ir.ui.view">
         <field name="name">product.template.form.inherit.rental</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_only_form_view"/>
@@ -55,6 +69,33 @@
             </group>-->
         </field>
     </record>
+    <template id="cart_lines_inherit_website_sale_line_commitment"
+              inherit_id="website_sale.cart_lines">
+        <xpath expr="//td[hasclass('td-product_name')]/div/t/strong" position="after">
+            <div t-if="line.commitment_date" class="text-muted d-none d-md-block small"/>
+                 Date of Service: <t t-esc="line.commitment_date"/>
+
+
+        </xpath>
+    </template>
+   <!-- <template id="cart_inherit_website_sale_line_commitment"
+              inherit_id="website_sale.cart">
+        <xpath expr="//td[hasclass('td-product_name')]/div/strong" position="after">
+            <div t-if="line.is_dateservice" class="text-muted d-none d-md-block small"
+                 t-esc="line.commitment_date"/>
+
+
+        </xpath>
+    </template>-->
+     <!--<template id="cart_summary_inherit_website_sale_line_commitment"
+              inherit_id="website_sale.cart_summary">
+        <xpath expr="//td[hasclass('td-product_name')]/div/strong" position="after">
+            <div t-if="line.is_dateservice" class="text-muted d-none d-md-block small"
+                 t-esc="line.commitment_date"/>
+
+
+        </xpath>
+    </template>-->
 
 
 

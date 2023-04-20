@@ -76,5 +76,36 @@ export const DateserviceMixin = {
         }*/
         return {};
     },
+    _getRentingDate($product) {
+        console.log("DEBUG 12")
+        const dateservice = ($product || this.$el).find('input[name=date_service]').val();
+        /*if (dateservice.length){
+            console.log(dateservice.value)
+            return {
+                start_date: dateservice.value
+            }
+        }*/
+        if (dateservice) {
+            console.log("FECHA SELECCIONADA:" + dateservice)
+             return dateservice;
+
+            //return {
+            //    start_date: this._getDateFromInputOrDefault(picker, 'startDate', 'start_date'),
+                //end_date: this._getDateFromInputOrDefault(picker, 'endDate', 'end_date'),
+            //};
+        }
+
+
+        //const rentingDates = ($product || this.$el).find('input[name=renting_dates]');
+        /*if (rentingDates.length) {
+            const picker = rentingDates.data('datetimepicker');
+            console.log(picker)
+            return {
+                start_date: this._getDateFromInputOrDefault(picker, 'startDate', 'start_date'),
+                //end_date: this._getDateFromInputOrDefault(picker, 'endDate', 'end_date'),
+            };
+        }*/
+        return {};
+    },
 
 };
