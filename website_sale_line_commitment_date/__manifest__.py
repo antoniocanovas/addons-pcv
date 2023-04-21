@@ -5,10 +5,9 @@
     'version': '1.0',
     'description': """
     """,
-    'depends': ['website_sale',],
+    'depends': ['website_sale','sale_order_line_date'],
     'data': [
         'views/templates.xml',
-        'security/ir.model.access.csv',
         'security/website_sale.xml',
 
     ],
