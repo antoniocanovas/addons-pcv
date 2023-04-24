@@ -8,7 +8,9 @@
         <field name="inherit_id" ref="website_event.registration_template"/>
         <field name="arch" type="xml">
             <data>
-                <xpath expr="//form[@id='registration_form']" position="replace"/>
+                <xpath expr="//form[@id='registration_form']" position="attributes">
+                    <attribute name="t-if">1==0</attribute>
+                </xpath>
             </data>
         </field>
     </record>
