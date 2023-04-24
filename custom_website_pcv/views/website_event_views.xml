@@ -15,4 +15,21 @@
         </field>
     </record>
 
+    <!-- Remove social sharing in website events: -->
+    <record id="website_event_pcv_description_inh_form" model="ir.ui.view">
+        <field name="name">website.event.pcv.description.inh.form</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website_event.event_description_full"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//t[@name='Event Description']/t/section/div/div/div/div[4]" position="replace"/>
+            </data>
+        </field>
+    </record>
+
+    <!-- Remove social sharing in website product: -->
+    <record id="website_sale.product_share_buttons" model="ir.ui.view">
+        <field name="active" eval="False"/>
+    </record>
+
 </odoo>
