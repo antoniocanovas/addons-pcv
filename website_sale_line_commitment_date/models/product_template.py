@@ -14,7 +14,7 @@ class ProductTemplate(models.Model):
 
     ##### cambiamos rent_ok  => dateservice_ok
     dateservice_ok = fields.Boolean(
-        string="DateService dependant",
+        string="Dated",
         help="Allow renting of this product.")
 
     def _get_combination_info(
