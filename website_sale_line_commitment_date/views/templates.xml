@@ -73,7 +73,7 @@
               inherit_id="website_sale.cart_lines">
         <xpath expr="//td[hasclass('td-product_name')]/div/t/strong" position="after">
             <div t-if="line.commitment_date" class="text-muted d-none d-md-block small"/>
-                 Date of Service: <t t-esc="line.commitment_date"/>
+                 Date of Service: <t t-esc="line.commitment_date" t-options='{"widget": "date"}'/>
 
 
         </xpath>
