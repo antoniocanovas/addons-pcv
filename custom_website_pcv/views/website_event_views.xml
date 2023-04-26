@@ -15,12 +15,8 @@
         </field>
     </record>
 
-    <!-- WEBSITE EVENTS: -->
-    <!-- Change event website to updated from this module: -->
-    <record id="website_event.event_description_full" model="ir.ui.view">
-        <field name="arch_updated" eval="False"/>
-    </record>
-    <!-- Remove social sharing in website events: -->
+    <!-- Remove social sharing in website events (finalmente a mano porque no se actualiza el registro):
+
     <record id="website_event_pcv_description_inh_form" model="ir.ui.view">
         <field name="name">website.event.pcv.description.inh.form</field>
         <field name="type">qweb</field>
@@ -31,7 +27,7 @@
             </data>
         </field>
         <field name="active" eval="True"></field>
-    </record>
+    </record>   -->
 
     <!-- Remove social sharing in website product: -->
     <record id="website_sale.product_share_buttons" model="ir.ui.view">
