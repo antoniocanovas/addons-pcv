@@ -5,7 +5,7 @@ from odoo import fields, models, api
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    tipo_calculo      = fields.Selection([('no','None'),
+    tipo_calculo      = fields.Selection([('no','Sin recálculo automático'),
                                           ('time','Jornada laboral establecida, con horas extras'),
                                           ('area','Área')],
                                          store=True, string='Recálculo variantes', default='no')
