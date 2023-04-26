@@ -16,7 +16,6 @@
     </record>
 
     <!-- Remove social sharing in website events (finalmente a mano porque no se actualiza el registro):
-
     <record id="website_event_pcv_description_inh_form" model="ir.ui.view">
         <field name="name">website.event.pcv.description.inh.form</field>
         <field name="type">qweb</field>
