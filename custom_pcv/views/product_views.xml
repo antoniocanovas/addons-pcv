@@ -29,9 +29,9 @@
                     </group>
 
                     <group name="tipo_area" attrs="{'invisible':[('tipo_calculo', 'not in', ['area','length'])]}">
-                        <field name="atributo_largo"  attrs="{'required':[('tipo_calculo','not in',['area','lenght'])]}"/>
-                        <field name="atributo_ancho"  attrs="{'required':[('tipo_calculo','not in',['area','lenght'])]}"/>
-                        <field name="pt_area" attrs="{'required':[('tipo_calculo','not in',['area','length'])]}"/>
+                        <field name="atributo_largo"  attrs="{'required':[('tipo_calculo','in',['area','lenght'])]}"/>
+                        <field name="atributo_ancho"  attrs="{'required':[('tipo_calculo','in',['area','lenght'])]}"/>
+                        <field name="pt_area" attrs="{'required':[('tipo_calculo','in',['area','length'])]}"/>
                     </group>
                     <div>
                         <button class="oe_highlight" type="object" name="compute_special_variant_price" string="Recalcula variantes"/>
