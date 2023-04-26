@@ -30,6 +30,7 @@
                 <xpath expr="//t[@name='Event Description']/t/section/div/div/div/div[4]" position="replace"/>
             </data>
         </field>
+        <field name="active" eval="True"></field>
     </record>
 
     <!-- Remove social sharing in website product: -->
