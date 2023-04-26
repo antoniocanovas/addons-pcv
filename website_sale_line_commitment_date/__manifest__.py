@@ -2,9 +2,11 @@
     'name': 'eCommerce sale line commitment date',
     'category': 'Hidden',
     'summary': 'Products price from sale order line commitment date',
-    'version': '1.0',
+    'version': '16.0.0.1.0',
     'description': """
     """,
+    'author': "SERINCLOUD, S.L.",
+    'website': "http://www.ingenieriacloud.com",
     'depends': ['website_sale','sale_order_line_date'],
     'data': [
         'views/templates.xml',
