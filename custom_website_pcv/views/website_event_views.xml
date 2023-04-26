@@ -28,9 +28,8 @@
     </record>
 
     <!-- Remove social sharing in website product: -->
-<!--
     <record id="website_sale.product_share_buttons" model="ir.ui.view">
         <field name="active" eval="False"/>
     </record>
--->
+
 </odoo>

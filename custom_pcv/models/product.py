@@ -5,7 +5,10 @@ from odoo import fields, models, api
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    tipo_calculo      = fields.Selection([('no','None'),('time','Jornada laboral establecida, con horas extras')], store=True, string='Recálculo variantes', default='no')
+    tipo_calculo      = fields.Selection([('no','None'),
+                                          ('time','Jornada laboral establecida, con horas extras'),
+                                          ('area','Área')],
+                                         store=True, string='Recálculo variantes', default='no')
 
     horas_minimo      = fields.Float('Horas mínimas')
     inicio_ordinaria  = fields.Float('Hora incio ordinaria')
@@ -15,6 +18,10 @@ class ProductTemplate(models.Model):
     pt_hora_extra     = fields.Many2one('product.template', string='Hora extra')
     atributo_hinicio  = fields.Many2one('product.attribute', string='Atributo hora inicio')
     atributo_hfin     = fields.Many2one('product.attribute', string='Atributo hora fin')
+
+    atributo_largo    = fields.Many2one('product.attribute', string='Atributo largo')
+    atributo_ancho    = fields.Many2one('product.attribute', string='Atributo ancho')
+    pt_area           = fields.Many2one('product.template', string='Precio 1 m2')
 
     def compute_special_variant_price(self):
         for record in self:
@@ -87,3 +94,9 @@ class ProductTemplate(models.Model):
                                 hextras * record.pt_hora_extra.standard_price)
                         if (va.lst_price != pvp) or (va.standard_price != coste):
                             va.write({'lst_price': pvp, 'standard_price': coste})
+
+            elif (record.tipo_calculo == 'area'):
+                pvp, coste = 0, 0
+
+
+
