@@ -15,6 +15,11 @@
         </field>
     </record>
 
+    <!-- WEBSITE EVENTS: -->
+    <!-- Change event website to updated from this module: -->
+    <record id="website_event.event_description_full" model="ir.ui.view">
+        <field name="arch_updated" eval="False"/>
+    </record>
     <!-- Remove social sharing in website events: -->
     <record id="website_event_pcv_description_inh_form" model="ir.ui.view">
         <field name="name">website.event.pcv.description.inh.form</field>
