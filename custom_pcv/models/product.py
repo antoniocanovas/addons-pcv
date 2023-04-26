@@ -95,8 +95,23 @@ class ProductTemplate(models.Model):
                         if (va.lst_price != pvp) or (va.standard_price != coste):
                             va.write({'lst_price': pvp, 'standard_price': coste})
 
+            # Cálculo de precios de coste y venta para áreas, considerando 'm' como fin valor atributo y sin decimales:
             elif (record.tipo_calculo == 'area'):
-                pvp, coste = 0, 0
+                for va in record.product_variant_ids:
+                    largo_char = self.env['product.template.attribute.value'].search(
+                        [('attribute_id', '=', record.atributo_largo.id),
+                         ('id', 'in', va.product_template_variant_value_ids.ids)]).name
+                    valor_num_largo = len(largo_char) -1
+                    largo = int(largo_chars[:valor_num_largo])
 
+                    ancho_char = self.env['product.template.attribute.value'].search(
+                        [('attribute_id', '=', record.atributo_ancho.id),
+                         ('id', 'in', va.product_template_variant_value_ids.ids)]).name
+                    valor_num_ancho = len(ancho_char) -1
+                    ancho = int(largo_chars[:valor_num_ancho])
 
+                    pvp = largo * ancho * record.pt_area.list_price
+                    coste = largo * ancho * record.pt_area.standard_price
 
+                    if (va.lst_price != pvp) or (va.standard_price != coste):
+                        va.write({'lst_price': pvp, 'standard_price': coste})
