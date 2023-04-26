@@ -8,7 +8,7 @@ class ProductTemplate(models.Model):
     tipo_calculo      = fields.Selection([('no','Sin recálculo automático'),
                                           ('time','Jornada laboral establecida, con horas extras'),
                                           ('area','Área'),
-                                          ('length', 'Área')],
+                                          ('length', 'Longitud')],
     store=True, string='Recálculo variantes', default='no')
 
     horas_minimo      = fields.Float('Horas mínimas')
