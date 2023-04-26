@@ -21,7 +21,7 @@ class ProductTemplate(models.Model):
 
     atributo_largo    = fields.Many2one('product.attribute', string='Atributo largo')
     atributo_ancho    = fields.Many2one('product.attribute', string='Atributo ancho')
-    pt_area           = fields.Many2one('product.template', string='Precio 1 m2')
+    pt_area           = fields.Many2one('product.template', string='Precio unitario')
 
     def compute_special_variant_price(self):
         for record in self:
@@ -97,18 +97,19 @@ class ProductTemplate(models.Model):
 
             # Cálculo de precios de coste y venta para áreas, considerando 'm' como fin valor atributo y sin decimales:
             elif (record.tipo_calculo == 'area'):
+                largo, ancho, largo_char, ancho_char, valor_num_largo, valor_num_ancho = "", "", "", "", 0, 0
                 for va in record.product_variant_ids:
                     largo_char = self.env['product.template.attribute.value'].search(
                         [('attribute_id', '=', record.atributo_largo.id),
                          ('id', 'in', va.product_template_variant_value_ids.ids)]).name
                     valor_num_largo = len(largo_char) -1
-                    largo = int(largo_chars[:valor_num_largo])
+                    largo = int(largo_char[:valor_num_largo])
 
                     ancho_char = self.env['product.template.attribute.value'].search(
                         [('attribute_id', '=', record.atributo_ancho.id),
                          ('id', 'in', va.product_template_variant_value_ids.ids)]).name
                     valor_num_ancho = len(ancho_char) -1
-                    ancho = int(largo_chars[:valor_num_ancho])
+                    ancho = int(ancho_char[:valor_num_ancho])
 
                     pvp = largo * ancho * record.pt_area.list_price
                     coste = largo * ancho * record.pt_area.standard_price
