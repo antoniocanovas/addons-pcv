@@ -15,7 +15,7 @@
         </field>
     </record>
 
-    <!-- Remove social sharing in website events (finalmente a mano porque no se actualiza el registro):
+    <!-- Remove social sharing in website events: -->
     <record id="website_event_pcv_description_inh_form" model="ir.ui.view">
         <field name="name">website.event.pcv.description.inh.form</field>
         <field name="type">qweb</field>
@@ -26,11 +26,28 @@
             </data>
         </field>
         <field name="active" eval="True"></field>
-    </record>   -->
+    </record>
 
     <!-- Remove social sharing in website product: -->
     <record id="website_sale.product_share_buttons" model="ir.ui.view">
         <field name="active" eval="False"/>
+    </record>
+
+    <!-- Remove product template price: -->
+    <record id="website_product_template_pcv_inh_form" model="ir.ui.view">
+        <field name="name">website.product.template.pcv.inh.form</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website_sale.products_item"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//div[@class='product_price']" position="attributes">
+                    <attribute name="t-if">
+                        product.id == 0
+                    </attribute>
+                </xpath>
+            </data>
+        </field>
+        <field name="active" eval="True"></field>
     </record>
 
 </odoo>
