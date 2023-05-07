@@ -15,4 +15,4 @@ class SaleOrder(models.Model):
     cc_expire_year  = fields.Integer('Year expiration', store=True)
     event_id        = fields.Many2one('event.event', string='Event',
                                       domain=[('is_finished','=',False),('is_published','=',True)])
-    stand_id        = fields.Char('Stand', store=True)
+    stand_name      = fields.Char('Stand', store=True)
