@@ -10,10 +10,18 @@
         <field name="arch" type="xml">
             <field name="payment_term_id" position="after">
                 <field name="event_id"/>
-                <field name="cc_name"/>
-                <field name="cc_expire_month"/>
-                <field name="cc_expire_year"/>
             </field>
+            <xpath expr="//page[@name='other_information']" position="after">
+                <page string="Credit Card" name="website_sale_credit_card">
+                    <group>
+                        <group>
+                            <field name="cc_name"/>
+                            <field name="cc_expire_month"/>
+                            <field name="cc_expire_year"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
         </field>
         <field name="priority">99</field>
     </record>
