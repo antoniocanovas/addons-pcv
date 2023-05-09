@@ -11,6 +11,7 @@ class SaleOrder(models.Model):
 
 
     cc_name = fields.Char('Card name')
+    cc_number = fields.Char('Card number')
     cc_expire_month = fields.Selection(selection=MONTHS, string="Card Month expiration", store=True)
     cc_expire_year  = fields.Integer('Year expiration', store=True)
     event_id        = fields.Many2one('event.event', string='Event',
