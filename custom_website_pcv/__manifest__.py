@@ -11,9 +11,11 @@
     "license": "AGPL-3",
     "depends": [
         "website_event",
+        "website_sale_product_brand",
                 ],
     "data": [
         "views/website_event_views.xml",
+        "views/website_sale_product_brand_views.xml",
     ],
     "installable": True,
 }

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <!-- Remove brand name: -->
+    <record id="website_sale_product_brand_pcv_inh_form" model="ir.ui.view">
+        <field name="name">website.sale.product.brand.pcv.inh.form</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website_sale_product_brand.product_brands"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//div[@class='card-body border-0']" position="replace"/>
+            </data>
+        </field>
+    </record>
+
+</odoo>
