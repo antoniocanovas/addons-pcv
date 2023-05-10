@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="dateservice_products_price" inherit_id="website_sale.product_price" name="DateService Product Price">
+        <!--<xpath expr="//div[@itemprop='offers']" position="attributes">
+            <attribute name="t-attf-class" separator=" " add="{{'o_hidden' if combination_info['is_dateservice'] else ''}}"/>
+        </xpath>-->
+        <xpath expr="//span[hasclass('oe_price')]" position="after">
+            <t t-if="combination_info['is_dateservice']">
+                <input type="hidden" name="is_dateservice" t-att-value="combination_info['is_dateservice']"/>
+                <!--<span class="oe_price o_renting_price" style="white-space: nowrap;"
+                      t-esc="combination_info['current_rental_price_per_unit']"
+                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>-->
+            </t>
+        </xpath>
+
+    </template>
 
     <template id="dateservice_product" inherit_id="website_sale.product" name="Select service Date">
         <xpath expr="//div[hasclass('js_main_product')]/t[@t-placeholder='select']" position="before">
@@ -12,17 +26,25 @@
                            t-att-value="combination_info['rental_duration_unit']"/>-->
                     <strong class="attribute_name">Service Day</strong>
                     <div class="oe_unremovable w-100">
-                        <div class="s_website_form_datetime input-group date col-md-8 ps-0"
+                        <div class="s_website_form_datetime input-group date col-md-8 ps-0 "
                              data-target-input="nearest"
                              id="rentingDates">
                             <input type="date" name="date_service"
-                                   class="form-control datetimepicker-input" data-target="#date_service"/>
+                                   class="form-control datetimepicker-input" data-target="#date_service"
+                                   t-attf-class="form-control"
+                            />
                             <!--<div class="input-group-text" >
                                 <i class="fa fa-calendar"></i>
                             </div>-->
 
                         </div>
                     </div>
+                    <div class="o_dateservice_warning d-none my-2">
+                    <span class="text-warning">
+                        <i class="fa fa-warning"/>
+                        <span name="dateservice_warning_message"/>
+                    </span>
+                </div>
                    <!-- <div class="container">
                         <div class="row">
                             <div class="col-sm-6">
@@ -72,8 +94,9 @@
     <template id="cart_lines_inherit_website_sale_line_commitment"
               inherit_id="website_sale.cart_lines">
         <xpath expr="//td[hasclass('td-product_name')]/div/t/strong" position="after">
-            <div t-if="line.commitment_date" class="text-muted d-none d-md-block small"/>
+            <div t-if="line.commitment_date" class="text-muted d-none d-md-block small">
                  Date of Service: <t t-esc="line.commitment_date" t-options='{"widget": "date"}'/>
+            </div>
 
 
         </xpath>
