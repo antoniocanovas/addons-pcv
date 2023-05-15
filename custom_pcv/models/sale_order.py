@@ -15,6 +15,6 @@ class SaleOrder(models.Model):
     cc_expire_month = fields.Selection(selection=MONTHS, string="Card Month expiration", store=True)
     cc_expire_year  = fields.Integer('Year expiration', store=True)
     event_id        = fields.Many2one('event.event', string='Event',
-                                      domain=[('is_finished','=',False),('is_published','=',True)])
+                                      domain=[('stage_id.pipe_end','=',False),('is_published','=',True)])
     stand_name      = fields.Char('Stand name', store=True)
     stand_number    = fields.Char('Stand number', store=True)

@@ -11,22 +11,18 @@ class PurchaseOrderLine(models.Model):
         for record in self:
             record.event_id = record.sale_order_id.event_id.id
     event_id = fields.Many2one('event.event', string='Event', readonly=False,
-                                      domain=[('stage_id.pipe_end','=',False),('is_published','=',True)],
-                                      compute='_get_sale_event'
+                               domain=[('stage_id.pipe_end','=',False),('is_published','=',True)],
+                               compute='_get_sale_event'
                                )
 
     @api.depends('create_date')
     def _get_sale_stand_name(self):
         for record in self:
-            record.event_id = record.sale_order_id.stand_name
-    stand_name = fields.Char('Stand name', store=True, readonly=False,
-                                  compute='_get_sale_stand_name'
-                                  )
+            record.stand_name = record.sale_order_id.stand_name
+    stand_name = fields.Char('Stand name', store=True, readonly=False, compute='_get_sale_stand_name')
 
     @api.depends('create_date')
     def _get_sale_stand_number(self):
         for record in self:
-            record.event_id = record.sale_order_id.stand_number
-    stand_number = fields.Char('Stand number', store=True, readonly=False,
-                                  compute='_get_sale_stand_number'
-                                  )
+            record.stand_number = record.sale_order_id.stand_number
+    stand_number = fields.Char('Stand number', store=True, readonly=False, compute='_get_sale_stand_number' )
