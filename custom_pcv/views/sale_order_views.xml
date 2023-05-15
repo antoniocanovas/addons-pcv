@@ -11,6 +11,7 @@
             <field name="payment_term_id" position="after">
                 <field name="event_id"/>
                 <field name="stand_name"/>
+                <field name="stand_number"/>
             </field>
             <xpath expr="//page[@name='other_information']" position="after">
                 <page string="Credit Card" name="website_sale_credit_card">
