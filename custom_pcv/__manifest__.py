@@ -11,9 +11,9 @@
     "license": "AGPL-3",
     "depends": [
         "sale_management",
+        "product_variant_sale_price",
         "purchase",
         "website_event",
-        "product_variant_sale_price",
     ],
     "data": [
         "views/product_views.xml",
