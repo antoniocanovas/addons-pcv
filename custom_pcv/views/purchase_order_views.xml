@@ -10,7 +10,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='order_line']/tree" position="inside">
                 <field name="event_id" optional="show"/>
-                <field name="stand_name" optional="show"/>
+                <field name="stand_name" optional="hide"/>
                 <field name="stand_number" optional="show"/>
                 <field name="customer_id" optional="hide"/>
             </xpath>
