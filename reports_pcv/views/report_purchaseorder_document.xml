@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="purchaseorder_pcv_inh_report" model="ir.ui.view">
+        <field name="name">purchaseorder.pcv.inh.report</field>
+        <field name="inherit_id" ref="purchase.report_purchaseorder_document"/>
+        <field name="arch" type="xml">
+
+            <data>
+
+                <!-- TABLE HEADER: -->
+                <xpath expr="//thead[1]/tr/th[2]" position="replace">
+                    <th name="th_customer"><strong>Customer</strong></th>
+                </xpath>
+                <xpath expr="//thead[1]/tr/th[3]" position="replace">
+                    <th name="th_stand"><strong>Stand</strong></th>
+                </xpath>
+
+                <!-- TABLE LINES: -->
+                <xpath expr="//td[@name='td_taxes']" position="replace">
+                    <td name="td_customer">
+                        <t t-if="line.customer_id.name">
+                            <span t-field="line.customer_id.name"/>
+                        </t>
+                        <t t-if="line.customer_id.email">
+                            <span t-field="line.customer_id.email"/>
+                        </t>
+                        <t t-if="line.customer_id.phone">
+                            <span t-field="line.customer_id.phone"/>
+                        </t>
+                    </td>
+                </xpath>
+                <xpath expr="//td[@class='text-center']" position="replace">
+                    <td class="text-center">
+                        <t t-if="line.event_id.id">
+                            <span t-field="line.event_id.name"/>
+                        </t>
+                        <t t-if="line.stand_name">
+                            <span t-field="line.stand_name"/>
+                        </t>
+                        <t t-if="line.stand_number">
+                            <span t-field="line.stand_number"/>
+                        </t>
+                    </td>
+                </xpath>
+
+            </data>
+
+        </field>
+        <field name="type">qweb</field>
+        <field name="priority">999</field>
+    </record>
+</odoo>
