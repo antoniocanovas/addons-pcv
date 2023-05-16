@@ -5,6 +5,7 @@ from odoo import fields, models, api
 class PurchaseOrderLine(models.Model):
     _inherit = "purchase.order.line"
 
+    customer_id = fields.Many2one('res.partner', string='Customer', related='sale_order_id.partner_id')
 
     @api.depends('create_date')
     def _get_sale_event(self):
