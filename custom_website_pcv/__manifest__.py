@@ -16,7 +16,7 @@
     "data": [
         "views/website_event_views.xml",
         "views/website_sale_views.xml",
-        "views/website_sale_product_brand_views.xml",
+#        "views/website_sale_product_brand_views.xml",
     ],
     "installable": True,
 }
