@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="purchaseorder_portal_pcv_inh_report" model="ir.ui.view">
+        <field name="name">purchaseorder.portal.pcv.inh.report</field>
+        <field name="inherit_id" ref="purchase.purchase_order_portal_content"/>
+        <field name="arch" type="xml">
+
+            <data>
+                <xpath expr="//thead/tr/th[6]" position="replace">
+                    <th t-if="not update_dates and order.state in ['purchase', 'done']" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                        <span>Customer</span>
+                    </th>
+                </xpath>
+                <xpath expr="//thead/tr/th[6]" position="after">
+                    <th t-if="not update_dates and order.state in ['purchase', 'done']" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                        <span>Stand</span>
+                    </th>
+                </xpath>
+                <xpath expr="//tbody/t/tr/t/td[6]" position="replace">
+                    <td t-if="not update_dates and order.state in ['purchase', 'done']" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                        <span t-field="line.customer_id.name"/>
+                        <br/>
+                        <span t-field="line.customer_id.email"/>
+                        <br/>
+                        <span t-field="line.customer_id.phone"/>
+                    </td>
+                    <td t-if="not update_dates and order.state in ['purchase', 'done']" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                        <span t-field="line.event_id.name"/>
+                        <br/>
+                        <span t-field="line.stand_name"/>
+                        <br/>
+                        <span t-field="line.stand_number"/>
+                    </td>
+                </xpath>
+            </data>
+
+        </field>
+        <field name="type">qweb</field>
+        <field name="priority">999</field>
+    </record>
+</odoo>
