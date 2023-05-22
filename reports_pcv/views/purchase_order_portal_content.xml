@@ -35,7 +35,7 @@
                         </t>
                     </td>
                     <td t-if="not update_dates and order.state in ['purchase', 'done']" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                        <t t-if="line.line.event_id.id">
+                        <t t-if="line.event_id.id">
                             <span t-field="line.event_id.name"/>
                             <br/>
                         </t>
