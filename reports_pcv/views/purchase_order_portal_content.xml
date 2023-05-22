@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
 
             <data>
+                <!-- TABLE HEADER: -->
                 <xpath expr="//thead/tr/th[6]" position="replace">
                     <th t-if="not update_dates and order.state in ['purchase', 'done']" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                         <span>Customer</span>
@@ -17,6 +18,8 @@
                         <span>Stand</span>
                     </th>
                 </xpath>
+
+                <!-- TABLE LINES: -->
                 <xpath expr="//tbody/t/tr/t/td[6]" position="replace">
                     <td t-if="not update_dates and order.state in ['purchase', 'done']" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                         <t t-if="line.custome_id.name">
