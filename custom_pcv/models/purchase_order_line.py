@@ -10,8 +10,9 @@ class PurchaseOrderLine(models.Model):
     @api.depends('create_date')
     def _get_sale_event(self):
         for record in self:
-            record.event_id = record.sale_order_id.event_id.id
-    event_id = fields.Many2one('event.event', string='Event', readonly=False,
+            if not record.event_id.id:
+                record.event_id = record.sale_order_id.event_id.id
+    event_id = fields.Many2one('event.event', string='Event', readonly=False, store=True,
                                domain=[('stage_id.pipe_end','=',False),('is_published','=',True)],
                                compute='_get_sale_event'
                                )
