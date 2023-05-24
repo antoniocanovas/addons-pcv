@@ -1,0 +1,38 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* reports_pcv
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-22 16:22+0000\n"
+"PO-Revision-Date: 2023-05-22 18:23+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. module: reports_pcv
+#: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_portal_pcv_inh_report
+msgid "<span>Customer</span>"
+msgstr "<span>Cliente</span>"
+
+#. module: reports_pcv
+#: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_portal_pcv_inh_report
+msgid "<span>Stand</span>"
+msgstr "<span>Estand</span>"
+
+#. module: reports_pcv
+#: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
+msgid "<strong>Customer</strong>"
+msgstr "<strong>Cliente</strong>"
+
+#. module: reports_pcv
+#: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
+msgid "<strong>Stand</strong>"
+msgstr "<strong>Estand</strong>"

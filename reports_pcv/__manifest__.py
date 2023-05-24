@@ -2,7 +2,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    "name": "Compra PCV",
+    "name": "Reports PCV",
     "summary": "Reports PCV",
     "version": "16.0.0.1.0",
     "category": "Reports",
@@ -15,7 +15,7 @@
                 ],
     "data": [
         "views/report_purchaseorder_document.xml",
-        "views/purchase_order_portal_content.xml"
+        "views/purchase_order_portal_content.xml",
     ],
     "installable": True,
 }
