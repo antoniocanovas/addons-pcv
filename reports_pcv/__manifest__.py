@@ -15,7 +15,7 @@
                 ],
     "data": [
         "views/report_purchaseorder_document.xml",
-        "views/purchase_order_portal_content.xml",
+        "views/label_production_view_pdf.xml",
     ],
     "installable": True,
 }
