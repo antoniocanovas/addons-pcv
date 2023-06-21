@@ -29,7 +29,7 @@
                         <h4 t-field="event.assembly"/>
                     </div>
                     <!-- Desmontaje -->
-                    <div t-if="event.disasembly" class="o_wevent_sidebar_block">
+                    <div t-if="event.disassembly" class="o_wevent_sidebar_block">
                         <h6 class="o_wevent_sidebar_title">Disassembly</h6>
                         <h4 t-field="event.disassembly"/>
                     </div>
