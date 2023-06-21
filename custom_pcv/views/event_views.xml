@@ -12,10 +12,10 @@
                             <group>
                                 <label for="assembly" string="Assembly"/>
                                 <br/>
-                                <field nolabel="1" colspan="2" name="assembly" placeholder="Assembly instructions in website ...)"/>
+                                <field nolabel="1" colspan="2" name="assembly" placeholder="Assembly instructions in website"/>
                                 <label for="disassembly" string="Disassembly"/>
                                 <br/>
-                                <field nolabel="1" colspan="2" name="disassembly" placeholder="Disassembly instructions in website ..."/>
+                                <field nolabel="1" colspan="2" name="disassembly" placeholder="Disassembly instructions in website"/>
                             </group>
             </xpath>
         </field>

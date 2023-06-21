@@ -81,12 +81,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:custom_pcv.field_event_event__assembly
 #: model_terms:ir.ui.view,arch_db:custom_pcv.event_pcv_inh_form
 msgid "Assembly"
-msgstr ""
+msgstr "Montaje"
 
 #. module: custom_pcv
 #: model_terms:ir.ui.view,arch_db:custom_pcv.event_pcv_inh_form
-msgid "Assembly instructions in website ...)"
-msgstr ""
+msgid "Assembly instructions in website"
+msgstr "Instrucciones de montaje para la página web"
 
 #. module: custom_pcv
 #: model:ir.model.fields,field_description:custom_pcv.field_product_product__atributo_ancho
@@ -150,8 +150,8 @@ msgstr "Desmontaje"
 
 #. module: custom_pcv
 #: model_terms:ir.ui.view,arch_db:custom_pcv.event_pcv_inh_form
-msgid "Disassembly instructions in website ..."
-msgstr "Desmontaje instrucciones en página web ..."
+msgid "Disassembly instructions in website"
+msgstr "Instrucciones de desmontaje en la página web"
 
 #. module: custom_pcv
 #: model:ir.model,name:custom_pcv.model_event_event
