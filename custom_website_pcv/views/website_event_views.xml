@@ -21,9 +21,25 @@
         <field name="type">qweb</field>
         <field name="inherit_id" ref="website_event.event_description_full"/>
         <field name="arch" type="xml">
+            <xpath expr="//div[@class='o_wevent_theme_bg_light col-lg-4 shadow-sm d-print-none']" position="replace">
+                <div class="o_wevent_theme_bg_light col-lg-4 shadow-sm d-print-none">
+                    <!-- Montaje -->
+                    <div t-if="event.assembly" class="o_wevent_sidebar_block">
+                        <h6 class="o_wevent_sidebar_title">Assembly</h6>
+                        <h4 t-field="event.assembly"/>
+                    </div>
+                    <!-- Desmontaje -->
+                    <div t-if="event.disasembly" class="o_wevent_sidebar_block">
+                        <h6 class="o_wevent_sidebar_title">Disassembly</h6>
+                        <h4 t-field="event.disassembly"/>
+                    </div>
+                </div>
+            </xpath>
+            <!-- para borrar, ya cambiado en lo de arriba (23/06/23):
             <data>
                 <xpath expr="//t[@name='Event Description']/t/section/div/div/div/div[4]" position="replace"/>
             </data>
+            -->
         </field>
         <field name="active" eval="True"></field>
     </record>
