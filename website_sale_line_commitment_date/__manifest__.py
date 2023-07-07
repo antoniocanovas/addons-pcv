@@ -3,6 +3,7 @@
     'category': 'Hidden',
     'summary': 'Products price from sale order line commitment date',
     'version': '16.0.0.1.0',
+    'license': 'AGPL-3',
     'description': """
     """,
     'author': "SERINCLOUD, S.L.",
