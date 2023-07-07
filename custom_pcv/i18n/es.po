@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-22 16:25+0000\n"
-"PO-Revision-Date: 2023-05-22 18:28+0200\n"
+"POT-Creation-Date: 2023-06-21 10:21+0000\n"
+"PO-Revision-Date: 2023-06-21 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -78,6 +78,17 @@ msgid "12"
 msgstr ""
 
 #. module: custom_pcv
+#: model:ir.model.fields,field_description:custom_pcv.field_event_event__assembly
+#: model_terms:ir.ui.view,arch_db:custom_pcv.event_pcv_inh_form
+msgid "Assembly"
+msgstr "Montaje"
+
+#. module: custom_pcv
+#: model_terms:ir.ui.view,arch_db:custom_pcv.event_pcv_inh_form
+msgid "Assembly instructions in website"
+msgstr "Instrucciones de montaje desde la página web"
+
+#. module: custom_pcv
 #: model:ir.model.fields,field_description:custom_pcv.field_product_product__atributo_ancho
 #: model:ir.model.fields,field_description:custom_pcv.field_product_template__atributo_ancho
 msgid "Atributo ancho"
@@ -132,6 +143,18 @@ msgid "Cálculo variantes"
 msgstr ""
 
 #. module: custom_pcv
+#: model:ir.model.fields,field_description:custom_pcv.field_event_event__disassembly
+#: model_terms:ir.ui.view,arch_db:custom_pcv.event_pcv_inh_form
+msgid "Disassembly"
+msgstr "Desmontaje"
+
+#. module: custom_pcv
+#: model_terms:ir.ui.view,arch_db:custom_pcv.event_pcv_inh_form
+msgid "Disassembly instructions in website"
+msgstr "Instrucciones de desmontaje desde la página web"
+
+#. module: custom_pcv
+#: model:ir.model,name:custom_pcv.model_event_event
 #: model:ir.model.fields,field_description:custom_pcv.field_purchase_order_line__event_id
 #: model:ir.model.fields,field_description:custom_pcv.field_sale_order__event_id
 msgid "Event"
