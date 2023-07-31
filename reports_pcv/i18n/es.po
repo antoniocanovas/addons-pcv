@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-22 16:22+0000\n"
-"PO-Revision-Date: 2023-05-22 18:23+0200\n"
+"POT-Creation-Date: 2023-07-31 11:30+0000\n"
+"PO-Revision-Date: 2023-07-31 13:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -26,6 +26,11 @@ msgstr "<span>Cliente</span>"
 #: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_portal_pcv_inh_report
 msgid "<span>Stand</span>"
 msgstr "<span>Estand</span>"
+
+#. module: reports_pcv
+#: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
+msgid "<strong>Commitment Date</strong>"
+msgstr "<strong>Fecha de inicio</strong>"
 
 #. module: reports_pcv
 #: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
