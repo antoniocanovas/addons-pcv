@@ -13,10 +13,20 @@
                     <th name="th_customer"><strong>Customer</strong></th>
                 </xpath>
                 <xpath expr="//thead[1]/tr/th[3]" position="replace">
+                    <th name="th_commitmentdate"><strong>Commitment Date</strong></th>
+                </xpath>
+                <xpath expr="//thead[1]/tr/th[4]" position="before">
                     <th name="th_stand"><strong>Stand</strong></th>
                 </xpath>
 
                 <!-- TABLE LINES: -->
+                <xpath expr="//td[@name='td_taxes']" position="after">
+                    <td>
+                        <t t-if="line.sale_commitment_date">
+                            <span t-field="line.sale_commitment_date" t-options="{'widget':'date'}"/>
+                        </t>
+                    </td>
+                </xpath>
                 <xpath expr="//td[@name='td_taxes']" position="replace">
                     <td name="td_customer">
                         <t t-if="line.customer_id.name">
