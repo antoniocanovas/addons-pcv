@@ -9,7 +9,7 @@
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='order_line']/tree" position="inside">
-                <field name="sale_commitment_date" optional="show"/>
+                <field name="sale_commitment_date" widget="date" optional="show"/>
                 <field name="event_id" optional="show"/>
                 <field name="stand_name" optional="hide"/>
                 <field name="stand_number" optional="show"/>
