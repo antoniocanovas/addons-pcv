@@ -14,6 +14,7 @@
         "product_variant_sale_price",
         "purchase",
         "website_event",
+        "sale_order_line_date",
     ],
     "data": [
         "views/product_views.xml",

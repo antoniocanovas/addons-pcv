@@ -6,6 +6,7 @@ class PurchaseOrderLine(models.Model):
     _inherit = "purchase.order.line"
 
     customer_id = fields.Many2one('res.partner', string='Customer', related='sale_order_id.partner_id')
+    sale_commitment_date = fields.Datetime('Commitment date', related='sale_line_id.commitment_date', store=True)
 
     @api.depends('create_date')
     def _get_sale_event(self):
