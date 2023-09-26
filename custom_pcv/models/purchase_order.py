@@ -34,8 +34,8 @@ class PurchaseOrder(models.Model):
             stand_numbers = []
             for li in record.order_line:
                 event = li.sale_line_id.order_id.event_id
-                if (event.id) and (event.stand_number not in stand_numbers):
-                    stand_numbers.append(event.stand_number)
+                if (event.id) and (li.sale_line_id.order_id.stand_number not in stand_numbers):
+                    stand_numbers.append(li.sale_line_id.order_id.stand_number)
             record['stand_number'] = str(stand_numbers)
     stand_number = fields.Char('Stand', store=False, compute='_get_stand_numbers')
 
