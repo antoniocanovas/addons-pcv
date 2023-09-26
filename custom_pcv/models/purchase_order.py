@@ -20,22 +20,22 @@ class PurchaseOrder(models.Model):
     @api.depends('sale_order_ids')
     def _get_events_name(self):
         for record in self:
-            event_names = []
+            event_names = ""
             for li in record.order_line:
                 event = li.sale_line_id.order_id.event_id
                 if (event.id) and (event.name not in event_names):
-                    event_names.append(event.name)
+                    event_names += event.name + " "
             record['event_name'] = str(event_names)
     event_name = fields.Char('Event', store=False, compute='_get_events_name')
 
     @api.depends('sale_order_ids')
     def _get_stand_numbers(self):
         for record in self:
-            stand_numbers = []
+            stand_numbers = ""
             for li in record.order_line:
                 event = li.sale_line_id.order_id.event_id
                 if (event.id) and (li.sale_line_id.order_id.stand_number not in stand_numbers):
-                    stand_numbers.append(li.sale_line_id.order_id.stand_number)
+                    stand_numbers += str(li.sale_line_id.order_id.stand_number) + " "
             record['stand_number'] = str(stand_numbers)
     stand_number = fields.Char('Stand', store=False, compute='_get_stand_numbers')
 
