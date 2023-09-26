@@ -4,7 +4,7 @@
 {
     "name": "Custom PCV",
     "summary": "Customs PCV",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     'category': 'Sales',
     "author": "Serincloud SL, ",
     "website": "https://www.ingenieriacloud.com",
@@ -13,6 +13,7 @@
         "sale_management",
         "product_variant_sale_price",
         "purchase",
+        "website_sale",
         "website_event",
         "sale_order_line_date",
     ],
@@ -21,6 +22,7 @@
         "views/sale_order_views.xml",
         "views/purchase_order_views.xml",
         "views/event_views.xml",
+        "data/automatic_actions.xml",
     ],
     "installable": True,
 }
