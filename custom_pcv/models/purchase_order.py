@@ -5,6 +5,7 @@ from odoo import fields, models, api
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
+    # Pedidos de venta de los que proviene esta compra:
     @api.depends('order_line.sale_line_id')
     def _get_sale_orders(self):
         for record in self:
@@ -15,6 +16,7 @@ class PurchaseOrder(models.Model):
             record['sale_order_ids'] = [(6,0,sale_orders)]
     sale_order_ids = fields.Many2many('sale.order', string='Sale orders', store=True, compute='_get_sale_orders')
 
+    # Función para confirmar automáticamente los pedidos que vienen del comercio electrónico (ver acción automática):
     def website_sale_purchase_auto_confirm(self):
         for record in self:
             confirm = False
