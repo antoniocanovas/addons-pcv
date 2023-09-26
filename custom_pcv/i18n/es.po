@@ -130,7 +130,7 @@ msgstr "Número de la tarjeta"
 #. module: custom_pcv
 #: model:ir.model.fields,field_description:custom_pcv.field_purchase_order_line__sale_commitment_date
 msgid "Commitment date"
-msgstr "Fecha de inicio"
+msgstr "Fecha de servicio"
 
 #. module: custom_pcv
 #: model_terms:ir.ui.view,arch_db:custom_pcv.sale_order_pcv_inh_form
