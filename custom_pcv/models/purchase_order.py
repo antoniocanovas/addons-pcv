@@ -14,12 +14,8 @@ class PurchaseOrder(models.Model):
                 if (li.sale_line_id.id) and (li.id not in sale_orders):
                     sale_orders.append(li.id)
             record['sale_order_ids'] = [(6,0,sale_orders)]
-    sale_order_ids = fields.Many2many(comodel_name='sale.order', string='Sale orders', store=True, compute='_get_sale_orders_ids',
-
-#                                      relation='purchase_sale_order_rel',
-#                                      column1='purchase_id',
-#                                      column2='sale_id',
-                                      )
+    sale_order_ids = fields.Many2many(comodel_name='sale.order', string='Sale orders', store=True,
+                                      compute='_get_sale_orders_ids')
 
     # Función para confirmar automáticamente los pedidos que vienen del comercio electrónico (ver acción automática):
     def website_sale_purchase_auto_confirm(self):
