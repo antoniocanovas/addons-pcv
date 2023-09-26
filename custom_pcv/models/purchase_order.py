@@ -16,9 +16,9 @@ class PurchaseOrder(models.Model):
             record['sale_order_ids'] = [(6,0,sale_orders)]
     sale_order_ids = fields.Many2many(string='Sale orders', store=True, compute='_get_sale_orders_ids',
                                       comodel_name='sale.order',
-                                      relation='purchase_sale_order_rel',
-                                      column1='purchase_id',
-                                      column2='sale_id',
+#                                      relation='purchase_sale_order_rel',
+#                                      column1='purchase_id',
+#                                      column2='sale_id',
                                       )
 
     # Función para confirmar automáticamente los pedidos que vienen del comercio electrónico (ver acción automática):
