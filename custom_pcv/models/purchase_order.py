@@ -26,7 +26,7 @@ class PurchaseOrder(models.Model):
         for record in self:
             confirm = False
             for li in record.order_line:
-                if (li.sale_line_id.id) and (li.sale_order_id.team_id.id == li.sale_line_id.order_id.website_id.team_id.id):
+                if (li.sale_line_id.id) and (li.sale_order_id.team_id.id == li.sale_line_id.order_id.website_id.salesteam_id.id):
                     confirm = True
             if (confirm == True):
                 record.button_confirm()
