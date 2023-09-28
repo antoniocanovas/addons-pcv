@@ -15,6 +15,7 @@ class PurchaseOrder(models.Model):
                     sale_orders.append(li.id)
             record['sale_order_ids'] = [(6,0,sale_orders)]
     sale_order_ids = fields.Many2many(comodel_name='sale.order', string='Sale orders', store=True,
+                                      relation='purchase2sale_m2m_rel',
                                       compute='_get_sale_orders_ids')
 
     @api.depends('sale_order_ids')
