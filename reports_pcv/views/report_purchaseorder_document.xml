@@ -8,16 +8,41 @@
 
             <data>
 
-                <!-- TABLE HEADER: -->
-                <xpath expr="//thead[1]/tr/th[2]" position="replace">
-                    <th name="th_customer"><strong>Customer</strong></th>
+                <xpath expr="//t/t/t[2]" position="after">
+                    <div>
+                        <table class="table-borderless mt-4">
+                            <t t-if="o.sale_partner_id">
+                                <tr>
+                                    <td>
+                                        <p><strong>Costumer:</strong> <span t-field="o.sale_partner_id"/></p>
+                                    </td>
+                                </tr>
+                            </t>
+
+                            <t t-if="o.event_name">
+                                <tr>
+                                    <td>
+                                        <p><strong>Event:</strong> <span t-field="o.event_name"/></p>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="o.stand_number">
+                                <tr>
+                                    <td>
+                                        <p><strong>Stand number:</strong> <span t-field="o.stand_number"/></p>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
                 </xpath>
+
+                <!-- TABLE HEADER: -->
+                <xpath expr="//thead[1]/tr/th[2]" position="replace"></xpath>
                 <xpath expr="//thead[1]/tr/th[3]" position="replace">
                     <th name="th_commitmentdate"><strong>Commitment Date</strong></th>
                 </xpath>
-                <xpath expr="//thead[1]/tr/th[4]" position="before">
-                    <th name="th_stand"><strong>Stand</strong></th>
-                </xpath>
+                <xpath expr="//thead[1]/tr/th[4]" position="before"></xpath>
 
                 <!-- TABLE LINES: -->
                 <xpath expr="//td[@name='td_taxes']" position="after">
@@ -27,32 +52,8 @@
                         </t>
                     </td>
                 </xpath>
-                <xpath expr="//td[@name='td_taxes']" position="replace">
-                    <td name="td_customer">
-                        <t t-if="line.customer_id.name">
-                            <span t-field="line.customer_id.name"/>
-                        </t>
-                        <t t-if="line.customer_id.email">
-                            <span t-field="line.customer_id.email"/>
-                        </t>
-                        <t t-if="line.customer_id.phone">
-                            <span t-field="line.customer_id.phone"/>
-                        </t>
-                    </td>
-                </xpath>
-                <xpath expr="//td[@class='text-center']" position="replace">
-                    <td class="text-center">
-                        <t t-if="line.event_id.id">
-                            <span t-field="line.event_id.name"/>
-                        </t>
-                        <t t-if="line.stand_name">
-                            <span t-field="line.stand_name"/>
-                        </t>
-                        <t t-if="line.stand_number">
-                            <span t-field="line.stand_number"/>
-                        </t>
-                    </td>
-                </xpath>
+                <xpath expr="//td[@name='td_taxes']" position="replace"></xpath>
+                <xpath expr="//td[@class='text-center']" position="replace"></xpath>
 
             </data>
 
