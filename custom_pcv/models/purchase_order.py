@@ -14,8 +14,8 @@ class PurchaseOrder(models.Model):
                 if (li.sale_line_id.id) and (li.id not in sale_orders):
                     sale_orders.append(li.id)
             record['sale_order_ids'] = [(6,0,sale_orders)]
-    sale_order_ids = fields.Many2many(comodel_name='sale.order', string='Sale orders', store=True,
-                                      relation='purchase2sale_m2m_rel',
+    sale_order_ids = fields.Many2many(string='Sale orders', store=True,
+                                      'sale.order','purchase2sale_m2m_rel','purchase_id','sale_id',
                                       compute='_get_sale_orders_ids')
 
     @api.depends('sale_order_ids')
