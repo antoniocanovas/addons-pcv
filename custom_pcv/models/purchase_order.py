@@ -49,7 +49,7 @@ class PurchaseOrder(models.Model):
             for li in record.order_line:
                 if (li.sale_line_id.order_partner_id.id) and (sale_customer == False):
                     sale_customer = li.sale_line_id.order_partner_id.id
-            record['sale_partner_id'] = sale_customer.id
+            record['sale_partner_id'] = sale_customer
     sale_partner_id = fields.Many2one('res.partner', string='Customer', store=False, compute='_get_sale_customer')
 
     # Función para confirmar automáticamente los pedidos que vienen del comercio electrónico (ver acción automática):
