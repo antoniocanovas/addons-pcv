@@ -11,11 +11,10 @@ class PurchaseOrder(models.Model):
         for record in self:
             sale_orders = []
             for li in record.order_line:
-                if (li.sale_line_id.id) and (li.id not in sale_orders):
-                    sale_orders.append(li.id)
+                if (li.sale_line_id.id) and (li.sale_order_id.id not in sale_orders):
+                    sale_orders.append(li.sale_order_id.id)
             record['sale_order_ids'] = [(6,0,sale_orders)]
-    sale_order_ids = fields.Many2many(string='Sale orders', store=True,
-                                      'sale.order','purchase2sale_m2m_rel','purchase_id','sale_id',
+    sale_order_ids = fields.Many2many('sale.order', string='Sale orders', store=True,
                                       compute='_get_sale_orders_ids')
 
     @api.depends('sale_order_ids')
