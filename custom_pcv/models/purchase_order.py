@@ -47,8 +47,8 @@ class PurchaseOrder(models.Model):
         for record in self:
             sale_customer = False
             for li in record.order_line:
-                if (li.order_partner_id.id) and (sale_customer == False):
-                    sale_customer = li.order_partner_id.id
+                if (li.sale_line_id.order_partner_id.id) and (sale_customer == False):
+                    sale_customer = li.sale_line_id.order_partner_id.id
             record['sale_partner_id'] = sale_customer.id
     sale_partner_id = fields.Many2one('res.partner', string='Customer', store=False, compute='_get_sale_customer')
 
