@@ -9,7 +9,6 @@
             <data>
 
                 <xpath expr="//t[@t-set='address']" position="replace">
-                <!--<xpath expr="//t[@t-set='address']/t/t[2]/div" position="before">-->
                       <div>
                          <div style="float:left;">
                             <div>
