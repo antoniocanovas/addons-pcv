@@ -14,8 +14,8 @@
                             <div>
                               <t t-if="o.sale_partner_id">
                                           <strong>Costumer:</strong> <span t-field="o.sale_partner_id"/><br/>
-                                          <strong>Email:</strong> <span t-field="o.sale_partner_id.email"/><br/>
-                                          <strong>Phone:</strong> <span t-field="o.sale_partner_id.phone"/><br/>
+                                          <!--<strong>Email:</strong> <span t-field="o.sale_partner_id.email"/><br/>
+                                          <strong>Phone:</strong> <span t-field="o.sale_partner_id.phone"/><br/> -->
                               </t>
                               <t t-if="o.sale_partner_id.mail">
                                           <strong>Email:</strong> <span t-field="o.sale_partner_id.email"/><br/>
