@@ -20,7 +20,7 @@
                                 </t>
                                 <strong>Address:</strong> <span t-field="o.sale_partner_id.street"/> <span t-field="o.sale_partner_id.zip"/> <span t-field="o.sale_partner_id.state_id"/> <span t-field="o.sale_partner_id.country_id"/><br/>
                                 <t t-if="o.sale_partner_id.email">
-                                    <strong>Email:</strong> <span t-field="o.sale_partner_id.email"/>
+                                    <strong>Email:</strong> <span t-field="o.sale_partner_id.email"/><br/>
                                 </t>
                                 <t t-if="o.sale_partner_id.phone">
                                     <strong>Phone:</strong> <span t-field="o.sale_partner_id.phone"/><br/>
