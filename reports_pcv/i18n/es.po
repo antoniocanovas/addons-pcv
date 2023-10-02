@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-29 11:45+0000\n"
-"PO-Revision-Date: 2023-09-29 13:50+0200\n"
+"POT-Creation-Date: 2023-10-02 08:50+0000\n"
+"PO-Revision-Date: 2023-10-02 10:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,25 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
-
-#. module: reports_pcv
-#: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
-msgid ""
-"<br/>\n"
-"                                          <strong>Email:</strong>"
-msgstr ""
-"<br/>\n"
-"                                          <strong>Correo:</strong>"
-
-#. module: reports_pcv
-#: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
-msgid ""
-"<br/>\n"
-"                                          <strong>Phone:</strong>"
-msgstr ""
-"<br/>\n"
-"                                          <strong>Teléfono:</strong>"
+"X-Generator: Poedit 3.4\n"
 
 #. module: reports_pcv
 #: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
@@ -53,6 +35,11 @@ msgstr "<span>Cliente</span>"
 #: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_portal_pcv_inh_report
 msgid "<span>Stand</span>"
 msgstr "<span>Estand</span>"
+
+#. module: reports_pcv
+#: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
+msgid "<strong>Address:</strong>"
+msgstr "<strong>Dirección:</strong>"
 
 #. module: reports_pcv
 #: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
@@ -77,9 +64,16 @@ msgstr "<strong>Evento:</strong>"
 #. module: reports_pcv
 #: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
 msgid "<strong>Phone:</strong>"
-msgstr "<strong>Teléfono:</strong>"
+msgstr ""
+"<br/>\n"
+"                                          <strong>Teléfono:</strong>"
 
 #. module: reports_pcv
 #: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
 msgid "<strong>Stand number:</strong>"
 msgstr "<strong>Estand:</strong>"
+
+#. module: reports_pcv
+#: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
+msgid "<strong>VAT:</strong>"
+msgstr "<strong>NIF:</strong>"
