@@ -9,40 +9,42 @@
             <data>
 
                 <xpath expr="//t[@t-set='address']" position="replace">
-                      <div>
-                         <div style="float:left;">
+                    <div>
+                        <div style="float:left;">
                             <div>
-                              <t t-if="o.sale_partner_id">
-                                          <strong>Costumer:</strong> <span t-field="o.sale_partner_id"/><br/>
-                                          <!--<strong>Email:</strong> <span t-field="o.sale_partner_id.email"/><br/>
-                                          <strong>Phone:</strong> <span t-field="o.sale_partner_id.phone"/><br/> -->
-                              </t>
-                              <t t-if="o.sale_partner_id.mail">
-                                          <strong>Email:</strong> <span t-field="o.sale_partner_id.email"/><br/>
-                              </t>
-                              <t t-if="o.sale_partner_id.phone">
-                                          <strong>Phone:</strong> <span t-field="o.sale_partner_id.phone"/><br/>
-                              </t>
-                              <t t-if="o.event_name">
-                                          <strong>Event:</strong> <span t-field="o.event_name"/><br/>
-                              </t>
-                              <t t-if="o.stand_number">
-                                          <strong>Stand number:</strong> <span t-field="o.stand_number"/><br/>
-                              </t>
-                          </div>
+                                <t t-if="o.sale_partner_id">
+                                    <strong>Costumer:</strong> <span t-field="o.sale_partner_id"/><br/>
+                                </t>
+                                <t t-if="o.sale_partner_id.vat">
+                                    <strong>VAT:</strong> <span t-field="o.sale_partner_id.vat"/><br/>
+                                </t>
+                                <strong>Address:</strong> <span t-field="o.sale_partner_id.street"/> <span t-field="o.sale_partner_id.zip"/> <span t-field="o.sale_partner_id.state_id"/> <span t-field="o.sale_partner_id.country_id"/><br/>
+                                <t t-if="o.sale_partner_id.email">
+                                    <strong>Email:</strong> <span t-field="o.sale_partner_id.email"/>
+                                </t>
+                                <t t-if="o.sale_partner_id.phone">
+                                    <strong>Phone:</strong> <span t-field="o.sale_partner_id.phone"/><br/>
+                                </t>
+                                <t t-if="o.event_name">
+                                    <strong>Event:</strong> <span t-field="o.event_name"/><br/>
+                                </t>
+                                <t t-if="o.stand_number">
+                                    <strong>Stand number:</strong> <span t-field="o.stand_number"/><br/>
+                                </t>
+                            </div>
                         </div>
                         <div style="float:right;">
-                          <div style="max-width:350px">
-                          <strong><span t-field="o.partner_id" style="font-weight: 900;word-break: break-all;font-size:16px;"/></strong><br/>
+                            <div style="max-width:350px">
+                                <strong><span t-field="o.partner_id" style="font-weight: 900;word-break: break-all;font-size:16px;"/></strong><br/>
                                 <span t-field="o.partner_id.street"/><br/>
                                 <span t-field="o.partner_id.zip"/> <span t-field="o.partner_id.state_id"/>,
                                 <span t-field="o.partner_id.country_id"/><br/>
                                 <span t-field="o.partner_id.phone" t-options="{&quot;phone_icons&quot;: True}"/><br/>
                                 NIF: <span t-field="o.partner_id.vat"/><br/>
-                         </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="clearfix"/>
+                    </div>
+                    <div class="clearfix"/>
                 </xpath>
 
                 <!-- TABLE HEADER: -->
