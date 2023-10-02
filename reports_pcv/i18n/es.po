@@ -64,9 +64,7 @@ msgstr "<strong>Evento:</strong>"
 #. module: reports_pcv
 #: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
 msgid "<strong>Phone:</strong>"
-msgstr ""
-"<br/>\n"
-"                                          <strong>Teléfono:</strong>"
+msgstr "<strong>Teléfono:</strong>"
 
 #. module: reports_pcv
 #: model_terms:ir.ui.view,arch_db:reports_pcv.purchaseorder_pcv_inh_report
