@@ -7,7 +7,16 @@
         <field name="arch" type="xml">
 
             <data>
-
+                <!-- Order: -->
+                <xpath expr="//div[@class='page']/div[2]" position="replace"/>
+                <xpath expr="//t/t/t[1]" position="after">
+                    <div class="mt-4">
+                        <h2 t-if="o.state in ['draft', 'sent', 'to approve']">Request for Quotation #<span t-field="o.name"/></h2>
+                        <h2 t-if="o.state in ['purchase', 'done']">Purchase Order #<span t-field="o.name"/></h2>
+                        <h2 t-if="o.state == 'cancel'">Cancelled Purchase Order #<span t-field="o.name"/></h2>
+                    </div>
+                </xpath>
+                <!-- Conctact info: -->
                 <xpath expr="//t[@t-set='address']" position="replace">
                     <div>
                         <div style="float:left;">
@@ -18,7 +27,9 @@
                                 <t t-if="o.sale_partner_id.vat">
                                     <strong>VAT:</strong> <span t-field="o.sale_partner_id.vat"/><br/>
                                 </t>
-                                <strong>Address:</strong> <span t-field="o.sale_partner_id.street"/> <span t-field="o.sale_partner_id.zip"/> <span t-field="o.sale_partner_id.state_id"/> <span t-field="o.sale_partner_id.country_id"/><br/>
+                                <div style="max-width:350px">
+                                    <strong>Address:</strong> <span t-field="o.sale_partner_id.street" style="word-break: break-all;"/> <span t-field="o.sale_partner_id.zip" style="word-break: break-all;"/> <span t-field="o.sale_partner_id.state_id" style="word-break: break-all;"/> <span t-field="o.sale_partner_id.country_id" style="word-break: break-all;"/><br/>
+                                </div>
                                 <t t-if="o.sale_partner_id.email">
                                     <strong>Email:</strong> <span t-field="o.sale_partner_id.email"/><br/>
                                 </t>
@@ -40,19 +51,30 @@
                                 <span t-field="o.partner_id.zip"/> <span t-field="o.partner_id.state_id"/>,
                                 <span t-field="o.partner_id.country_id"/><br/>
                                 <span t-field="o.partner_id.phone" t-options="{&quot;phone_icons&quot;: True}"/><br/>
-                                NIF: <span t-field="o.partner_id.vat"/><br/>
+                                NIF: <span t-field="o.partner_id.vat"/>
                             </div>
                         </div>
                     </div>
                     <div class="clearfix"/>
                 </xpath>
 
+                <!-- Order date: -->
+                <xpath expr="//div[@id='informations']/div[4]" position="replace"/>
+                <xpath expr="//div[@id='informations']/div[3]" position="replace"/>
+                <xpath expr="//div[@id='informations']/div[1]" position="replace"/>
+                <xpath expr="//div[@class='page']/div[1]" position="after">
+                    <div style="margin-top: 20px;" t-if="o.state in ['purchase','done'] and o.date_approve" class="col-3 bm-2">
+                        <strong>Order Date:</strong>
+                        <p t-field="o.date_approve" class="m-0"/>
+                    </div>
+                </xpath>
+
                 <!-- TABLE HEADER: -->
-                <xpath expr="//thead[1]/tr/th[2]" position="replace"></xpath>
+                <xpath expr="//thead[1]/tr/th[2]" position="replace"/>
                 <xpath expr="//thead[1]/tr/th[3]" position="replace">
                     <th name="th_commitmentdate"><strong>Commitment Date</strong></th>
                 </xpath>
-                <xpath expr="//thead[1]/tr/th[4]" position="before"></xpath>
+                <xpath expr="//thead[1]/tr/th[4]" position="before"/>
 
                 <!-- TABLE LINES: -->
                 <xpath expr="//td[@name='td_taxes']" position="after">
@@ -62,8 +84,8 @@
                         </t>
                     </td>
                 </xpath>
-                <xpath expr="//td[@name='td_taxes']" position="replace"></xpath>
-                <xpath expr="//td[@class='text-center']" position="replace"></xpath>
+                <xpath expr="//td[@name='td_taxes']" position="replace"/>
+                <xpath expr="//td[@class='text-center']" position="replace"/>
 
             </data>
 
