@@ -10,6 +10,7 @@
     'summary': 'PCV custom translations.',
     'depends': [
         'website_sale',
+        'account',
     ],
     'data': [
     ],
